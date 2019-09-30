@@ -23,6 +23,14 @@ router.post('/register', auth.optional, (req, res, next) => {
     });
   }
 
+  if(!req.body.username) {
+    return res.status(422).json({
+      errors: {
+        username: 'is required',
+      },
+    });
+  }
+
   const finalUser = new Users(req.body);
 
   finalUser.setPassword(req.body.password);
