@@ -29,6 +29,7 @@ if(!isProduction) {
 
 //Requirements for models and routes
 require('./models/Users');
+require('./models/Maps')
 require('./config/passport');
 app.use(require('./routes'));
 
