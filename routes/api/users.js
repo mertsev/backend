@@ -30,13 +30,9 @@ router.post('/register', auth.optional, (req, res, next) => {
       },
     });
   }
-
   const finalUser = new Users(req.body);
-
   finalUser.setPassword(req.body.password);
-
-  return finalUser.save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() }));
+  return finalUser.save().then(() => res.json({ user: finalUser.toAuthJSON() }));
 });
 
 //POST login route (optional, everyone has access)

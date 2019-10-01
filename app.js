@@ -34,7 +34,7 @@ require('./config/passport');
 app.use(require('./routes'));
 
 //Configure Mongoose
-mongoose.connect('mongodb://localhost/passport-tutorial');
+mongoose.connect('mongodb://localhost/finopolis');
 mongoose.set('debug', true);
 
 //Error handlers & middlewares
