@@ -97,19 +97,19 @@ router.get('/current', auth.required, (req, res, next) => {
     });
 });
 
-//Edit user for testing
-router.put('/:id', auth.optional, (req, res, next) => {
-  Users.findById(req.params.id)
-    .then((user) => {
-      if(!user) {
-        console.log("fail");
-        return res.sendStatus(400);
-      }
-      
-      user.balance = 1000;
-      user.save;
-      return res.json({ user: user.toAuthJSON() });
+//Edit user balance
+//Todo proper data validity check
+router.put('/', auth.required, (req, res, next) => {
+  const { payload: { id } } = req;
+  
+  Users.findById(id, function (err, user){
+    user.balance = req.body.balance;
+    if (err) return res.send(err);
+    user.save(function (err) {
+      if (err) return res.status(400);
+      res.json({balance: user.balance});
     });
+  }); 
 });
 
 module.exports = router;

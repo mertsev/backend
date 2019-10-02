@@ -34,7 +34,11 @@ require('./config/passport');
 app.use(require('./routes'));
 
 //Configure Mongoose
-mongoose.connect('mongodb://localhost/finopolis');
+mongoose.connect('mongodb://localhost/finopolis', {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 mongoose.set('debug', true);
 
 //Error handlers & middlewares
