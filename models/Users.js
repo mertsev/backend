@@ -1,14 +1,24 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+//Plugin for uniqueness validation without exceptions
 
 const { Schema } = mongoose;
 
 const UsersSchema = new Schema({
-  email: String,
+  email: {
+    type: String, 
+    lowercase: true,
+    required: [true, 'Email required'],
+    unique: true
+  },
   username: {
     type: String,
+    required: [true, 'Username required'],
     unique: true
+  },
+  balance: {
+    type: Number
   },
   hash: String,
   salt: String,

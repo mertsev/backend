@@ -30,9 +30,22 @@ router.post('/register', auth.optional, (req, res, next) => {
       },
     });
   }
+
   const finalUser = new Users(req.body);
   finalUser.setPassword(req.body.password);
-  return finalUser.save().then(() => res.json({ user: finalUser.toAuthJSON() }));
+  
+  finalUser.save(function(err) {
+    if (err) {
+      if (err.name === 'MongoError' && err.code === 11000) {
+        return res.status(422).send({ success: false, message: 'User is not unique!' });
+      }
+
+      // Some other error
+      return res.status(422).send(err);
+    }
+  res.json({ user: finalUser.toAuthJSON() });
+  });
+
 });
 
 //POST login route (optional, everyone has access)
@@ -80,6 +93,21 @@ router.get('/current', auth.required, (req, res, next) => {
         return res.sendStatus(400);
       }
 
+      return res.json({ user: user.toAuthJSON() });
+    });
+});
+
+//Edit user for testing
+router.put('/:id', auth.optional, (req, res, next) => {
+  Users.findById(req.params.id)
+    .then((user) => {
+      if(!user) {
+        console.log("fail");
+        return res.sendStatus(400);
+      }
+      
+      user.balance = 1000;
+      user.save;
       return res.json({ user: user.toAuthJSON() });
     });
 });
