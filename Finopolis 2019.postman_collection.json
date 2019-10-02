@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a154356a-44e3-4d09-aa7e-6c27f20a1521",
+		"_postman_id": "e747fa3b-a969-4199-b26d-65291b4872db",
 		"name": "Finopolis 2019",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -76,6 +76,10 @@
 								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "localhost:8000/api/users/current",
 							"host": [
@@ -122,8 +126,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Maps",
@@ -143,10 +146,7 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
-						},
+						"body": {},
 						"url": {
 							"raw": "localhost:8000/api/maps/all?",
 							"host": [
@@ -231,6 +231,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "localhost:8000/api/maps/create",
 							"host": [
@@ -251,6 +255,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "localhost:8000/api/maps/5d9227c65db9f451f012c0c0",
 							"host": [
@@ -266,9 +274,27 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "Yandex Maps API",
+			"item": [
+				{
+					"name": "Get Geojson by requesting address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
