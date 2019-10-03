@@ -283,13 +283,34 @@
 					"name": "Get Geojson by requesting address",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:8000/api/ya-maps/geocode?request=Plotkina+3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ya-maps",
+								"geocode"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "Plotkina+3"
+								}
+							]
 						}
 					},
 					"response": []
