@@ -27,12 +27,6 @@ if(!isProduction) {
   app.use(errorHandler());
 }
 
-//Requirements for models and routes
-require('./models/Users');
-require('./models/Maps')
-require('./config/passport');
-app.use(require('./routes'));
-
 //Configure Mongoose
 mongoose.connect('mongodb://localhost/finopolis', {
   useCreateIndex: true,
@@ -40,6 +34,12 @@ mongoose.connect('mongodb://localhost/finopolis', {
   useUnifiedTopology: true
 });
 mongoose.set('debug', true);
+
+//Requirements for models and routes
+require('./models/Users');
+require('./config/passport');
+require('./models/Maps');
+app.use(require('./routes'));
 
 //Error handlers & middlewares
 if(!isProduction) {
