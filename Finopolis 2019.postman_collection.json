@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e747fa3b-a969-4199-b26d-65291b4872db",
+		"_postman_id": "f9be34b1-2533-4921-b23f-62119310a7dd",
 		"name": "Finopolis 2019",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,7 +25,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "top1@kek.ru",
+									"value": "top2@kek.ru",
 									"type": "text"
 								},
 								{
@@ -35,7 +35,7 @@
 								},
 								{
 									"key": "username",
-									"value": "loh",
+									"value": "loh2",
 									"type": "text"
 								}
 							]
@@ -65,7 +65,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkOGY4ZjgyY2ZkMzI0MjNjNDllMDZmYiIsImV4cCI6MTU3NDg3MzQ3NCwiaWF0IjoxNTY5Njg5NDc0fQ.YEQvYpFNTysQXMhPkDV935s7Qel_mZBunHooklfNVnA",
+								"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvcDJAa2VrLnJ1IiwiaWQiOiI1ZDlhMjczYWMzZGI4YzM1Y2MyNGNiN2YiLCJleHAiOjE1NzU1Njc2NzQsImlhdCI6MTU3MDM4MzY3NH0.fziAi8yirfVIyojaZ2o3r-FuqPSQlsX9G_pPzL6ZQz0",
 								"type": "text"
 							},
 							{
@@ -76,10 +76,6 @@
 								"disabled": true
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "localhost:8000/api/users/current",
 							"host": [
@@ -96,7 +92,7 @@
 					"response": []
 				},
 				{
-					"name": "User login (doesn't work)",
+					"name": "User login",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -108,8 +104,19 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"top1@kek.ru\",\r\n    \"password\": \"123\"\r\n  }\r\n}"
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "top2@kek.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "localhost:8000/api/users/login",
@@ -126,16 +133,14 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Maps",
 			"item": [
 				{
 					"name": "Get all maps",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -146,7 +151,6 @@
 								"type": "text"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "localhost:8000/api/maps/all?",
 							"host": [
@@ -255,10 +259,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "localhost:8000/api/maps/5d9227c65db9f451f012c0c0",
 							"host": [
@@ -274,7 +274,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Yandex Maps API",
@@ -290,10 +291,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "localhost:8000/api/ya-maps/geocode?request=Plotkina+3",
 							"host": [
@@ -315,7 +312,9 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }

@@ -50,8 +50,14 @@ router.post('/register', auth.optional, (req, res, next) => {
 
 //POST login route (optional, everyone has access)
 router.post('/login', auth.optional, (req, res, next) => {
-
-  if(!user.body.email) {
+  var user = {
+    username: req.body.email,
+    password: req.body.password
+  };
+  console.log("1");
+  
+  if(!req.body.username) {
+    console.log("no email");
     return res.status(422).json({
       errors: {
         email: 'is required',
@@ -59,7 +65,8 @@ router.post('/login', auth.optional, (req, res, next) => {
     });
   }
 
-  if(!user.body.password) {
+  if(!req.body.password) {
+    console.log("no pass");
     return res.status(422).json({
       errors: {
         password: 'is required',
@@ -67,14 +74,16 @@ router.post('/login', auth.optional, (req, res, next) => {
     });
   }
 
-  return passport.authenticate('local', { session: false }, (err, passportUser, info) => {
+  return passport.authenticate('local', { session: false }, (err, user, info) => {
+    console.log("logging user: ", user);
     if(err) {
       return next(err);
     }
 
-    if(passportUser) {
-      const user = passportUser;
-      user.token = passportUser.generateJWT();
+    if(user) {
+      console.log("in user");
+      //const user = user;
+      user.token = user.generateJWT();
 
       return res.json({ user: user.toAuthJSON() });
     }
